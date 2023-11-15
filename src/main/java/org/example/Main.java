@@ -1,19 +1,60 @@
 package org.example;
+import java.util.Scanner;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
-public class Main {
-    public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+    class Calculator {
 
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
+        public static void main(String[] args) {
+            Scanner input = new Scanner(System.in);
+            double num1, num2;
+            char operator;
+            double result;
 
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
+            while (true) {
+                System.out.println("Enter a number:");
+                num1 = input.nextDouble();
+
+                System.out.println("Enter an operator (+, -, *, /): ");
+                operator = input.next().charAt(0);
+
+                System.out.println("Enter a number:");
+                num2 = input.nextDouble();
+
+                while (operator != '+' && operator != '-' && operator != '*' && operator != '/') {
+                    System.out.println("Invalid operator. Please enter (+, -, *, /): ");
+                    operator = input.next().charAt(0);
+                }
+
+
+                switch (operator) {
+                    case '+':
+                        result = num1 + num2;
+                        break;
+
+                    case '-':
+                        result = num1 - num2;
+                        break;
+
+                    case '*':
+                        result = num1 * num2;
+                        break;
+
+                    case '/':
+                        result = num1 / num2;
+                        break;
+
+                    default:
+                        System.out.println("Invalid operator");
+                        return;
+                }
+
+                System.out.println(num1 + " " + operator + " " + num2 + " = " + result);
+
+                System.out.println("Do you want to continue? (y/n)");
+                char choice = input.next().charAt(0);
+
+                if (choice == 'n') {
+                    break;
+                }
+            }
         }
     }
-}
